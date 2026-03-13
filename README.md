@@ -45,29 +45,8 @@ This ensures the same topic is not reused again.
 
 # 🏗 Workflow Architecture
 
-```
-Schedule Trigger
-      ↓
-Get Topics from Notion
-      ↓
-Generate Post with AI
-      ↓
-Send to Telegram for Approval
-      ↓
-Approval Decision
-   ↙        ↘
-Reject      Approve
-  ↓            ↓
-Notify      Download Media
-               ↓
-        Publish to LinkedIn
-               ↓
-        Publish to Facebook
-               ↓
-       Send Telegram Notification
-               ↓
-     Update Notion Status (Published)
-```
+<img width="1525" height="623" alt="Capture d&#39;écran 2026-03-13 022035" src="https://github.com/user-attachments/assets/8e041eeb-8b1c-4eaa-ab03-6f55a4225f13" />
+
 
 ---
 
@@ -83,43 +62,6 @@ Notify      Download Media
 | LinkedIn API       | Publish posts                           |
 | Facebook Graph API | Publish posts                           |
 
----
-
-# 📂 Repository Structure
-
-```
-ai-social-media-automation
-│
-├── workflow
-│   └── n8n-workflow.json
-│
-├── images
-│   └── workflow-diagram.png
-│
-├── README.md
-└── LICENSE
-```
-
----
-
-# ⚙️ Installation
-
-## 1️⃣ Install n8n
-
-You can run n8n using Docker:
-
-```bash
-docker run -it --rm \
--p 5678:5678 \
--v ~/.n8n:/home/node/.n8n \
-n8nio/n8n
-```
-
-Then open:
-
-```
-http://localhost:5678
-```
 
 ---
 
@@ -136,37 +78,12 @@ Before running the workflow, configure these credentials inside n8n:
 
 ---
 
-# 📥 Import the Workflow
-
-1. Open n8n
-2. Go to **Workflows**
-3. Click **Import**
-4. Upload:
-
-```
-workflow/n8n-workflow.json
-```
-
----
-
 # 🗂 Notion Database Structure
 
 The Notion database acts as the **content management system**.
 
-Example schema:
+<img width="1069" height="810" alt="Capture d&#39;écran 2026-03-12 073234" src="https://github.com/user-attachments/assets/899b19f2-30cf-444f-a0f9-b12da0b3eb36" />
 
-| Field       | Type        | Description                  |
-| ----------- | ----------- | ---------------------------- |
-| Topic       | Text        | Title of the post            |
-| Description | Text        | Context for AI generation    |
-| Media       | File / Link | Image stored in Google Drive |
-| Status      | Select      | Todo / Published             |
-
-Workflow logic:
-
-```
-Todo → Published
-```
 
 Once a post is published, its status is updated to **Published** to prevent duplicates.
 
@@ -176,23 +93,8 @@ Once a post is published, its status is updated to **Published** to prevent dupl
 
 The workflow sends the generated content to Telegram.
 
-Example message:
+<img width="518" height="517" alt="Capture d&#39;écran 2026-03-12 072919" src="https://github.com/user-attachments/assets/35f083b9-a252-4658-8e5f-f32368ad985b" />
 
-```
-📝 New Post Generated
-
-Topic: AI in Cybersecurity
-
-Generated Content:
-[AI generated post text]
-
-Approve this post?
-```
-
-User options:
-
-* Approve
-* Reject
 
 ---
 
@@ -202,14 +104,14 @@ If approved, the workflow automatically publishes the post to:
 
 ### LinkedIn
 
-Supports:
+<img width="727" height="844" alt="Capture d&#39;écran 2026-03-12 073044" src="https://github.com/user-attachments/assets/67a4913c-b56e-474c-9951-7d98f37c8d2a" />
 
-* Personal profile
-* Organization page
 
 ### Facebook
 
 Publishes the post to a configured Facebook Page using the Facebook Graph API.
+<img width="803" height="753" alt="Capture d&#39;écran 2026-03-12 073103" src="https://github.com/user-attachments/assets/b71fc327-496d-46db-86e8-6615eba532f7" />
+
 
 ---
 
@@ -217,38 +119,10 @@ Publishes the post to a configured Facebook Page using the Facebook Graph API.
 
 After successful publication, the user receives a Telegram message:
 
-```
-✅ Post Published Successfully
-
-LinkedIn:
-https://linkedin.com/...
-
-Facebook:
-https://facebook.com/...
-```
+<img width="640" height="357" alt="Capture d&#39;écran 2026-03-12 073153" src="https://github.com/user-attachments/assets/d7b3a630-38f9-4b1b-9d59-3043676b6786" />
 
 ---
 
-# 🔐 Security Best Practices
-
-Do not commit API keys or credentials to the repository.
-
-Use environment variables:
-
-```
-.env
-```
-
-Example:
-
-```
-NOTION_API_KEY=
-TELEGRAM_BOT_TOKEN=
-LINKEDIN_ACCESS_TOKEN=
-FACEBOOK_ACCESS_TOKEN=
-```
-
----
 
 # 🎯 Use Cases
 
@@ -280,17 +154,6 @@ Possible enhancements:
 Hassen Saddour
 
 Cybersecurity Engineer & Automation Enthusiast
-
----
-
-# ⭐ Support
-
-If you find this project useful:
-
-⭐ Star the repository
-🍴 Fork it
-🤝 Contribute improvements
-
 ---
 
 # 📜 License
