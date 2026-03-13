@@ -154,8 +154,3 @@ Possible enhancements:
 Hassen Saddour
 
 Cybersecurity Engineer & Automation Enthusiast
----
-
-# 📜 License
-
-This project is licensed under the MIT License.
